@@ -1,3 +1,7 @@
+<?php
+include "connexion.php";
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,6 +37,18 @@
 
 <main>
 
+
+<?php
+    $sql = "SELECT * FROM films";
+    $resultat = $conn->query($sql);
+    if(mysqli_num_rows($resultat)>0){
+        while($listeFilm = mysqli_fetch_assoc($resultat)){
+
+        }
+    }else{
+        echo "Vous n'avez aucun film";
+    }
+?>
 <section id = "catalogue">
     
     <div class = "box">

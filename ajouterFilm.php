@@ -1,3 +1,26 @@
+<?php
+include "connexion.php";
+
+if (isset($_POST["submit"])) {
+    $titre = $_POST["titre"];
+    $date = $_POST["date"];
+    $image = $_POST["image"];
+
+    $sql = "INSERT INTO films(titre, date, image) VALUES('$titre', '$date', '$image')";
+
+    $resultat = $conn->query($sql);
+
+    echo "<br>";
+    if ($resultat == TRUE) {
+        echo "Un nouveau film a été ajouté";
+    } else {
+        echo "Echec d'ajout : " . $idcon->error;
+    }
+
+    $conn->close();
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
