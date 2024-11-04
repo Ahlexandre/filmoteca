@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8" />
     <title>title</title>
-    <link href = "style.css" rel = "stylesheet">
+    <link href = "styles/style.css" rel = "stylesheet">
 </head>
 <body>
 
 <header>
 
 <h1>
-    Collection de film
+    Filmoteca
 </h1>
 
 <nav>
@@ -19,7 +19,7 @@
             <a href="#" class ="link">Vos Films</a>
         </li>
         <li>
-            <a href="#" class ="link">Ajouter Des Films</a>
+            <a href="ajouterFilm.php" target = "_BLANK" class ="link">Ajouter Des Films</a>
         </li>
         <li>
             <a href="#" class ="link">Modifier Vos Films</a>
@@ -39,13 +39,12 @@
         <h1 class = "titreFilm">Test</h1>
     <form class = "avis">
         <label for = "avis">Laissez votre avis</label>
-        <input type="text" name="avis" id="avis" placeholder = "Avis">
-        <button class = "btn" type="submit" value="Envoyer">Envoyer</button>
+        <textarea class = "avis" type="text" name="avis" id="avis" placeholder = "Avis"></textarea>
+        <input class="btn" type="submit" name="submit" value="Envoyer">
     </form>
     </div>
 
 </section>
-
 </main>
 
 <footer>
