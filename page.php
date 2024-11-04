@@ -1,13 +1,16 @@
 <?php
-include "connexion.php";
+include 'connexion.php';
+
+$film_id = $_GET["id"];
+
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang = "fr">
 <head>
     <meta charset="UTF-8" />
-    <title>title</title>
-    <link href = "styles/style.css" rel = "stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <title></title>
 </head>
 <body>
 
@@ -20,7 +23,7 @@ include "connexion.php";
 <nav>
     <ul>
         <li>
-            <a href="#" class ="link">Vos Films</a>
+            <a href="index.php" class ="link">Vos Films</a>
         </li>
         <li>
             <a href="ajouterFilm.php" class ="link">Ajouter Des Films</a>
@@ -33,18 +36,13 @@ include "connexion.php";
 </nav>
 </header>
 
-
-<main>
-<section id = "catalogue">
-
 <?php
-    $sql = "SELECT * FROM movie";
+    $sql = "SELECT * FROM movie WHERE id = $film_id";
     $resultat = $conn->query($sql);
     if(mysqli_num_rows($resultat)>0){
         while($listeFilm = mysqli_fetch_assoc($resultat)){
+
 ?>
-    <a target = "_BLANK" href="page.php?id=<?php echo $listeFilm['id']; ?>">
-    <div class = "box">
         <table>
             <tr>
                 <th> <h1 class = "titreFilm"><?php echo $listeFilm['title']; ?></h1></th>
@@ -64,41 +62,39 @@ include "connexion.php";
         </table>
         
         <br/>
-        <p>Appuyer pour en savoir plus</p>
+        <form class = "avis" method = "POST" action = "">
+        <label for = "avis">Laissez votre avis</label>
+        <textarea class = "avis" type="text" name="avis" id="avis" placeholder = "Avis"></textarea>
+        <input class="btn" type="submit" name="submit" value="Envoyer">
+    </form>
     </div>
-    </a>
-<?php
+<?php 
         }
-    }else{
-        echo "Vous n'avez aucun film";
     }
-?>
+ ?>
 
-<?php
-
-if(isset($_POST["submit"])){
+ <?php 
+ $film_id = $_GET["id"];
+ if (isset($_POST["submit"])){
     $avis = $_POST["avis"];
+    $sql = "INSERT INTO avis(idfilm, avis) VALUES('$film_id', '$avis')";
+    $soumettre_avis = $conn->query($sql);
+ }
+ 
 
-    $sql = "INSERT INTO avis(id,avis) VALUES('$id', '$avis')";
-}
-?>
+ $sql2 = "SELECT * FROM avis WHERE idfilm = $film_id";
+ $selection_avis = $conn->query($sql2);
 
-
-</section>
-</main>
-
-<footer>
-
-</footer>
-
-<?php
-
-
-
+ if(mysqli_num_rows($selection_avis)>0){
+    while($listeCommentaire = mysqli_fetch_assoc($selection_avis)){
+        echo $listeCommentaire["avis"]."<br>";
+    }
+ }else{
+    echo "Il n'y aucun avis sur ce film";
+ }
 
 
-?>
-    
+ ?>
+
 </body>
 </html>
-

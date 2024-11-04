@@ -3,10 +3,14 @@ include "connexion.php";
 
 if (isset($_POST["submit"])) {
     $titre = $_POST["titre"];
-    $date = $_POST["date"];
-    $image = $_POST["image"];
+    $year = $_POST["year"];
+    $synopsis = $_POST["synopsis"];
+    $director = $_POST["director"];
+    $created = date('Y-m-d H:i:s');
+    $deleted = date('Y-m-d H:i:s');
+    $genre =$_POST["genre"];
 
-    $sql = "INSERT INTO films(titre, date, image) VALUES('$titre', '$date', '$image')";
+    $sql = "INSERT INTO movie(title, year, synopsis, director, `created-at`, `deleted-at`, genre) VALUES('$titre', '$year', '$synopsis', '$director', '$created', '$deleted', '$genre')";
 
     $resultat = $conn->query($sql);
 
@@ -46,7 +50,7 @@ if (isset($_POST["submit"])) {
             <a href="ajouterFilm.php" target = "_BLANK" class ="link">Ajouter Des Films</a>
         </li>
         <li>
-            <a href="#" class ="link">Modifier Vos Films</a>
+            <a href="modifierFilm.php"" class ="link">Modifier Vos Films</a>
         </li>
     </ul>
    
@@ -61,8 +65,10 @@ if (isset($_POST["submit"])) {
         <form action="" method="POST">
             <h3>Ajouter un film</h3>
             <input class="box" type="text" name="titre" placeholder="Titre" required>
-            <input class="box" type="date" name="date" placeholder="Date" required>
-            <input class="box" type="text" name="image" placeholder="Lien vers l'image" required>
+            <input class="box" type="date" name="year" placeholder="Année" required>
+            <input class="box" type="text" name="synopsis" placeholder="Synopsis" required>
+            <input class="box" type="text" name="director" placeholder="Directeur" required>
+            <input class="box" type="text" name="genre" placeholder="Genre" required>
             <input class="btn" type="submit" name="submit" value="Ajouter">
         </form>
     </div>
