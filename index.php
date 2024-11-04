@@ -19,7 +19,7 @@
             <a href="#" class ="link">Vos Films</a>
         </li>
         <li>
-            <a href="ajouterFilm.php" target = "_BLANK" class ="link">Ajouter Des Films</a>
+            <a href="ajouterFilm.php" class ="link">Ajouter Des Films</a>
         </li>
         <li>
             <a href="#" class ="link">Modifier Vos Films</a>
