@@ -1,12 +1,13 @@
 <?php
 
+namespace App\Repository;
+
 class FilmRepository
 {
     private $pdo;
 
     public function __construct()
     {
-        // Configuration des informations de connexion
         $dsn = 'mysql:host=localhost;dbname=filmoteca';
         $username = 'filmoteca_user';
         $password = 'filmoteca_password';
