@@ -1,0 +1,119 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header{
+    text-align: center;
+}
+
+h1{
+    text-transform: uppercase;
+}
+
+#catalogue{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;  
+}
+
+#catalogue .box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;  
+
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0,0,0,.1);
+    border: solid;
+    padding: 20px;
+    background-color: white;
+    width: 250px;
+}
+
+.avis{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.btn{
+    border-radius: 5px;
+    background-color: black;
+    padding: 15px;
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+    border: none;
+}
+
+nav ul{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    list-style-type: none;
+}
+
+a{
+    text-decoration: none;
+    color : inherit;
+}
+.link{
+    padding: 15px;
+    border-radius: 5px;
+    color:black;
+    background-color: white;
+    transition: all 300ms ease-in-out
+}
+
+.link:hover{
+    background-color: black;
+    color: white;
+}
+
+#formulaire{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.formulaire-box{
+    width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+ }
+ 
+ 
+ .formulaire-box form h3{
+    font-size: 30px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+ }
+ 
+ .formulaire-box form .box{
+    width: 90%;
+    border: none;
+    padding: 12px 14px;
+    margin: 10px 0;
+ }
+
+table th{
+    text-align: center
+}
+
+table td{
+    text-align: left;
+}
+
+.tableauFilm{
+    width: 100%;
+    border: solid 2px;
+    border-radius: 5px;
+}
+
+.tableauFilm td{
+    text-align: center;
+}
