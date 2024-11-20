@@ -2,51 +2,29 @@
 
 namespace App\Repository;
 
+use App\Core\DatabaseConnection;
+use App\Service\EntityMapper;
+use App\Entity\Film;
+
 class FilmRepository
 {
-    private $pdo;
+    private \PDO $db;
+    private EntityMapper $entityMapperService;
 
     public function __construct()
     {
-        $dsn = 'mysql:host=localhost;dbname=filmoteca';
-        $username = 'filmoteca_user';
-        $password = 'filmoteca_password';
-
-        try {
-            $this->pdo = new PDO($dsn, $username, $password);
-        } catch (PDOException $e) {
-            die("Erreur de connexion à la base de données : " . $e->getMessage());
-        }
+        $this->db = DatabaseConnection::getConnection();
+        $this->entityMapperService = new EntityMapper();
     }
 
-    public function getFilmById(int $id)
+    public function findAll(): array
     {
-        $sql = "SELECT * FROM films WHERE id = :id";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
+        $query = 'SELECT * FROM film';
+        $stmt = $this->db->query($query);
 
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        if ($row) {
-            return $this->mapFilmEntity($row);
-        }
+        $films = $stmt->fetchAll();
 
-        return null; 
-    }
-
-
-    public function mapFilmEntity(array $row)
-    {
-        $film = new FilmEntity();
-        $film->setId($row['id']);
-        $film->setTitle($row['title']);
-        $film->setYear($row['year']);
-        $film->setGenre($row['genre']);
-        $film->setSynopsis($row['synopsis']);
-        $film->setDirector($row['director']);
-        $film->setDeletedAt($row['deleted_at']);
-        $film->setCreatedAt($row['created_at']);
-
-        return $film;
+        // return $this->entityMapperService->mapToEntities($films, Film::class);
+        return $films;
     }
 }
