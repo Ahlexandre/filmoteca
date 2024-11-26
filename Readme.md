@@ -162,3 +162,69 @@ N’oubliez pas de consulter les logs si vous rencontrez des problèmes :
 - En cas de problème, vérifiez que Docker et Docker Compose sont bien installés et fonctionnels.
 
 Bon développement ! 🚀
+
+
+
+Voici une présentation du projet Filmoteca, que nous utiliserons comme support tout au long de votre formation de remise à niveau Web (INF5).
+
+
+1. Qu'est-ce que Filmoteca ?
+Filmoteca est une application simple de gestion de films. Ce projet vous permettra de découvrir et pratiquer les notions essentielles de HTML, CSS et PHP dans un contexte concret et professionnel.
+
+
+2. Méthodologie
+Nous travaillerons sur ce projet en live coding pendant les sessions de formation. Vous pourrez ainsi suivre chaque étape du développement en direct et poser vos questions en temps réel ;
+Code source : Vous pouvez accéder au repository public du projet ici : Filmoteca sur GitHub.
+
+3. Récupération des mises à jour
+Le projet évoluera au fil des sessions. Pour disposer de la dernière version du code avant chaque cours, pensez à exécuter la commande suivante dans votre terminal : `git pull`.
+
+Ce projet est conçu pour vous accompagner dans votre apprentissage. N’hésitez pas à explorer le code, tester vos idées et poser des questions. Je suis là pour vous guider !
+
+
+4. Schéma de l'application en MVC
+Voici le schéma de l'application telle qu'elle sera conçue en architecture MVC (Modèle-Vue-Contrôleur) :
+
+
+
+Schéma MVC Filmoteca.
+
+Ce schéma vous aidera à comprendre l’organisation du projet et à mieux appréhender la structure de votre code.
+
+Voici un autre schéma qui se focus principalement sur la partie modèle :
+
+Schéma modèle Filmoteca.
+
+Le contrôleur reçoit une demande de l'utilisateur (par exemple, afficher la liste des films).
+Il appelle le Repository pour récupérer les données correspondantes depuis la base de données.
+Le Repository exécute une requête SQL pour obtenir les résultats bruts.
+Les résultats sont ensuite transformés par le Repository en objets (par exemple, des objets Film).
+Les objets Film sont renvoyés au contrôleur, plutôt que des tableaux.
+Le contrôleur transmet ces objets à la vue pour les afficher proprement à l'utilisateur.
+
+
+5. Description de l'architecture MVC
+L’application suit l’architecture MVC (Modèle-Vue-Contrôleur) avec :
+
+Modèle (Model) :
+Entity : classes représentant les tables de la base de données.
+Exemple : une classe Film avec des attributs comme $id et $title.
+Repository : classes exécutant les requêtes SQL.
+Exemple : une classe FilmRepository avec des méthodes comme findAll().
+Vue (View) :
+Utilisation du moteur de template Twig pour séparer la présentation et le code.
+Exemple : un fichier list.html.twig affichant une liste de films.
+Contrôleur (Controller) :
+Reçoit les requêtes utilisateur via un Routeur et fait le lien entre le Modèle et la Vue.
+
+
+6. Front Controller et Routeur
+Le Front Controller (index.php) reçoit toutes les requêtes et les transmet au Routeur, qui détermine le contrôleur et l’action à exécuter.
+
+7. Installation et exécution du projet
+Pour installer et exécuter le projet Filmoteca sur votre machine en local, je vous invite à consulter le fichier README.md présent dans le repository. Vous y trouverez :
+
+Les prérequis nécessaires.
+Les étapes pour cloner le projet.
+Les commandes Make pour gérer les conteneurs et le projet.
+Prenez le temps de bien suivre les instructions pour configurer l’environnement correctement. Si vous avez des questions ou des problèmes, n’hésitez pas à me les poser.
