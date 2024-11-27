@@ -1,0 +1,54 @@
+{# film.twig #}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détails du Film</title>
+</head>
+<body>
+
+    <h1>Détails du Film</h1>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <td>{{ film.id }}</td>
+        </tr>
+        <tr>
+            <th>Titre</th>
+            <td>{{ film.title }}</td>
+        </tr>
+        <tr>
+            <th>Année</th>
+            <td>{{ film.year }}</td>
+        </tr>
+        <tr>
+            <th>Type</th>
+            <td>{{ film.type }}</td>
+        </tr>
+        <tr>
+            <th>Synopsis</th>
+            <td>{{ film.synopsis }}</td>
+        </tr>
+        <tr>
+            <th>Réalisateur</th>
+            <td>{{ film.director }}</td>
+        </tr>
+        <tr>
+            <th>Supprimé à</th>
+            <td>{% if film.deletedAt is not null %}{{ film.deletedAt|date('Y-m-d H:i:s') }}{% else %}Non supprimé{% endif %}</td>
+        </tr>
+        <tr>
+            <th>Créé le</th>
+            <td>{{ film.createdAt|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Mis à jour le</th>
+            <td>{{ film.updatedAt|date('Y-m-d H:i:s') }}</td>
+        </tr>
+    </table>
+
+</body>
+</html>

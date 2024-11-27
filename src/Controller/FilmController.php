@@ -38,7 +38,16 @@ class FilmController
         $filmRepository = new FilmRepository();
         $film = $filmRepository->find((int) $queryParams['id']);
 
-        dd($film);
+            // Vérification si le film existe
+        if ($film === null) {
+        // Si le film n'existe pas, tu peux afficher une erreur ou rediriger
+        return $this->render('error.twig', [
+            'message' => 'Film non trouvé'
+        ]);
+        }
+
+        // Rendu du template Twig avec l'objet Film
+        echo $this->twig->render('read.html.twig', ['film' => $film]);
     }
 
     public function update()
