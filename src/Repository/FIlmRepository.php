@@ -45,7 +45,7 @@ class FilmRepository
         $stmt = $this->db->prepare($query);
         // Exécute la requête avec l'identifiant fourni
         $stmt->execute(['id' => $id]);
-
+            
         // Récupère le film sous forme de tableau associatif
         $film = $stmt->fetch();
 
